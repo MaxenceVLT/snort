@@ -1,0 +1,103 @@
+{
+    "extractors": [
+      {
+        "title": "Snort Destination IP",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 4,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "ip_dst",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s(\\S+):\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Snort Source IP",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 5,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "ip_src",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s(\\S+):\\d+\\s->\\s\\S+:\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Snort Protocol",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 3,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "Protocol",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{(\\S+)\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Snort Priority",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 2,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "Priority",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s(\\d)\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Snort Classification",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 1,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "Classification",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:(.+)\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Snort Message",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 0,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "Message",
+        "extractor_config": {
+          "regex_value": "\\[\\d+:\\d+:\\d\\] (.*) \\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\[\\d+:\\d+:\\d\\].*\\[Classification:.+\\]\\s\\[Priority:\\s\\d\\].*\\{\\S+\\}\\s\\S+:\\d+\\s->\\s\\S+:\\d+"
+      },
+      {
+        "title": "Application Name",
+        "extractor_type": "regex",
+        "converters": [],
+        "order": 0,
+        "cursor_strategy": "copy",
+        "source_field": "message",
+        "target_field": "application",
+        "extractor_config": {
+          "regex_value": " (.+?)\\:"
+        },
+        "condition_type": "regex",
+        "condition_value": "\\bsnort"
+      }
+    ],
+    "version": "1.0"
+  }
